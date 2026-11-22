@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.28.3)
+cmake_minimum_required(VERSION 3.16)
 
 project(Parchis_Game)
 
@@ -10,9 +10,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
-# se agrega la ubicacion del directorio include de sfml
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -std=c++17 -I/opt/homebrew/Cellar/sfml@2/2.6.2/include")  # Pasamos de Wall y Wextra mejor xd
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -std=c++17")  # Pasamos de Wall y Wextra mejor xd
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -std=c++17")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 
@@ -28,8 +26,7 @@ if(NOT CMAKE_BUILD_TYPE)
     )
 endif()
 
-# se include la ubicacion del directorio de instalacion de sfml
-set(SFML_DIR "/opt/homebrew/Cellar/sfml@2/2.6.2/lib/cmake/SFML")
+# On macOS (Homebrew) you may need: -DSFML_DIR=$(brew --prefix sfml@2)/lib/cmake/SFML
 
 # Find SFML shared libraries (removed version number (2.5))
 find_package(SFML COMPONENTS system window graphics network audio REQUIRED)

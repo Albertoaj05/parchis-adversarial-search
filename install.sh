@@ -1,16 +1,10 @@
 #!/bin/bash
+# Build the game in ./build and launch it (Ubuntu/Debian).
+set -e
 
-BUILD_DOC=OFF # ON or OFF
+sudo apt-get -y install libsfml-dev cmake g++
 
-# Install SFML, if not Ubuntu, comment next line & check https://www.sfml-dev.org/tutorials/2.5/start-linux.php
-sudo apt-get -y install libsfml-dev
-# For doxygen generation
-if [ "$BUILD_DOC" = "ON" ]; then
-    sudo apt-get -y install doxygen graphviz
-fi
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build -j"$(nproc)"
 
-cmake -DCMAKE_BUILD_TYPE=Debug -DBUILD_DOC=$BUILD_DOC .
-
-make -j8
-
-./ParchisGame
+./build/ParchisGame
