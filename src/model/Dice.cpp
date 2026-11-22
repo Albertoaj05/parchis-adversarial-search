@@ -75,7 +75,6 @@ bool Dice::isAvailable(color player, int n) const{
    else{
       return (find(dice.at(player).at(0).begin(), dice.at(player).at(0).end(), n) != dice.at(player).at(0).end());
    }
-   //Gracias copilot ;)
 }
 
 void Dice::addNumber(color player, int n){
